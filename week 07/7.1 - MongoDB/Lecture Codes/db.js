@@ -15,24 +15,24 @@ const ObjectId = mongoose.ObjectId;
 
 // Define the User schema with fields for email, password, and name
 const User = new Schema({
-    email: { type: String, unique: true }, // Make email unique to avoid duplicate entries
-    password: String,
-    name: String,
+  email: { type: String, unique: true }, // Make email unique to avoid duplicate entries
+  password: String,
+  name: String,
 });
 
 // Define the Todo schema with fields for title, done, and userId
 const Todo = new Schema({
-    title: String,
-    done: Boolean,
-    userId: ObjectId,
+  title: String,
+  done: Boolean,
+  userId: ObjectId,
 });
 
 // Create Mongoose models for users and todos collections using the User and Todo schemas
 const UserModel = mongoose.model("users", User);
-const TodoModel = mongoose.model("todos", Todo);
+const TodoModel = mongoose.model("todoss", Todo);
 
 // Export the User and Todo models for use in other files
 module.exports = {
-    UserModel,
-    TodoModel,
+  UserModel,
+  TodoModel,
 };
