@@ -29,7 +29,7 @@ const Todo = new Schema({
 
 // Create Mongoose models for users and todos collections using the User and Todo schemas
 const UserModel = mongoose.model("users", User);
-const TodoModel = mongoose.model("todoss", Todo);
+const TodoModel = mongoose.model("todoss s . sm", Todo);
 
 // Export the User and Todo models for use in other files
 module.exports = {
