@@ -1,8 +1,8 @@
 // Import the express module to create the application
-const express = require('express');
+const express = require("express");
 
 // Import body-parser middleware to parse incoming request bodies
-const bodyParser = require('body-parser');
+const bodyParser = require("body-parser");
 
 // Initialize an Express application instance
 const app = express();
@@ -27,6 +27,6 @@ const PORT = 3000;
 
 // Start the server and listen on the specified port
 app.listen(PORT, () => {
-    // Log a message to the console when the server is running
-    console.log(`Server is running on port ${PORT}`);
+  // Log a message to the console when the server is running
+  console.log(`Server is running on Port ${PORT}`);
 });
