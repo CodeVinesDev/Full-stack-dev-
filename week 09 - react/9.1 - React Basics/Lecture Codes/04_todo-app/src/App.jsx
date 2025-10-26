@@ -51,8 +51,31 @@ function App() {
 
   // Return the JSX to render the component
   return (
-    //    ui ux
-    <div>ui pending</div>
+    <div>
+      <h1>Todo App</h1> {/* Header for the app */}
+      {/* Input field for the todo title */}
+      <input id="title" type="text" placeholder="Enter Todo Title" />
+      {/* Input field for the todo description */}
+      <input
+        id="description"
+        type="text"
+        placeholder="Write Todo Description"
+      />
+      {/* Button to trigger the addTodo function */}
+      <button onClick={addTodo}>Add Todo</button>
+      <br />
+      {/* Display the todos array as a JSON string */}
+      {/* {JSON.stringify(todos)}  */}
+      {/* Map through the todos array and render each todo item using the Todo component */}
+      {todos.map((todo, index) => (
+        <Todo
+          key={index} // Unique key for each todo component
+          title={todo.title} // Pass the title prop to the Todo component
+          description={todo.description} // Pass the description prop to the Todo component
+          done={todo.done} // Pass the done status to the Todo component
+        />
+      ))}
+    </div>
   );
 }
 
