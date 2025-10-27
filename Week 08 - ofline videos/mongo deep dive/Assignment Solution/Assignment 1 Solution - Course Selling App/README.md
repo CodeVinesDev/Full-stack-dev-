@@ -57,7 +57,7 @@ You need to use mongodb to store all the data persistently.
   - Output: { purchasedCourses: [ { id: 1, title: 'course title', description: 'course description', price: 100, imageLink: 'https://linktoimage.com'}, ... ] }
 
 
-## Assignment #1 - Add 2 more routes update and delete for admin
+## Assignment #1 - Add 2 more routes update and delete for admin .
 - PUT /admin/courses
   - Description: Update a coourse by courseId
   - Input: Headers: { 'Authorization': 'Bearer <your-token>' }, Body: { courseId: 'course-id', title: 'course title', description: 'course description', price: 100, imageLink: 'https://linktoimage.com' }
