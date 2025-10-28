@@ -72,7 +72,7 @@ function App() {
           key={index} // Unique key for each todo component
           title={todo.title} // Pass the title prop to the Todo component
           description={todo.description} // Pass the description prop to the Todo component
-          done={todo.done} // Pass the done status to the Todo component
+          done={todo.done} // Pass the done status to the Todo components
         />
       ))}
     </div>
