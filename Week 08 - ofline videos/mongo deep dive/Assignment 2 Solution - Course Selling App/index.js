@@ -7,7 +7,7 @@ const bodyParser = require("body-parser");
 // Create an instance of an Express application
 const app = express();
 
-// Import the server port from the configuration file
+// Import the server port from the configuration files
 const { PORT } = require("./config");
 
 // Import the admin and user routes
