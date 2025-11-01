@@ -1,18 +1,18 @@
 // Import the express module for creating a web server
-const express = require("express"); 
+const express = require("express");
 
 // Import body-parser middleware for parsing request bodies
-const bodyParser = require("body-parser"); 
+const bodyParser = require("body-parser");
 
 // Create an instance of an Express application
-const app = express(); 
+const app = express();
 
-// Import the server port from the configuration file
-const { PORT } = require("./config"); 
+// Import the server port from the configuration files
+const { PORT } = require("./config");
 
 // Import the admin and user routes
 const adminRouter = require("./routes/admin");
-const userRouter = require("./routes/user"); 
+const userRouter = require("./routes/user");
 
 // Middleware for parsing request bodies in JSON format
 app.use(bodyParser.json());
@@ -23,5 +23,5 @@ app.use("/user", userRouter); // Route all user-related requests to the user rou
 
 // Start the server and listen on the specified port
 app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`); // Log the server status to the console
+  console.log(`Server is running on port ${PORT}`); // Log the server status to the console
 });
