@@ -40,7 +40,7 @@ function Counter() {
   return (
     <div>
       {/* Display the count state variable */}
-      <h1>{count}</h1>
+      <h1>count:{count}</h1>
       {/* Call the increaseCount function when the button is clicked */}
       <button onClick={increaseCount}>Increase Count</button>
 
