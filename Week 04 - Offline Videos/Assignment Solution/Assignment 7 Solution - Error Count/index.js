@@ -29,7 +29,7 @@ app.get("/user", function (req, res) {
 // create a route for POST request on /user path
 app.post("/user", function (req, res) {
   // return a json response with message "created dummy user"
-  res.status(200).json({ msg: "created dummy user" });
+  res.status(200).json({ msg: "created dummy user for test" });
 });
 
 // create a route for GET request on /errorCount path
