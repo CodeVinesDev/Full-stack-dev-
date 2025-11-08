@@ -47,7 +47,7 @@ Each week of the cohort introduces a new module, including:
 ---
 
 ## ⚙️ Tech Stack
-- **Languages:** JavaScript, TypeScript, Bash  
+- **Languages:** JavaScript, TypeScript, Bash , Node js
 - **Frameworks:** React, Express.js, Next.js  
 - **Databases:** MongoDB, PostgreSQL  
 - **Tools:** Docker, Git, GitHub, VS Code  
