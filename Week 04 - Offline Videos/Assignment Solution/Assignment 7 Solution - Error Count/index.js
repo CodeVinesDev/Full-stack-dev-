@@ -43,7 +43,7 @@ app.use((err, req, res, next) => {
   // send a 404 status code as response to the user if there is an exception in any endpoint!
   res.status(404).send({});
 
-  // increment the errorCount variable by 1
+  // increment the errorCount variable by +1
   errorCount++;
 });
 
