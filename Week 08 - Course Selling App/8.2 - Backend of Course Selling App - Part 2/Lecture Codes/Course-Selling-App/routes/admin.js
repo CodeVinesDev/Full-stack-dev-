@@ -13,7 +13,7 @@ const adminRouter = Router();
 const { adminModel, courseModel } = require("../db");
 
 // Import the adminMiddleware function to authenticate and authorize admins before allowing access to routes
-const { adminMiddleware } = require("../middleware/ad");
+const { adminMiddleware } = require("../middleware/admin");
 
 // Import the JWT Admin Password from the config file for verification
 const { JWT_ADMIN_PASSWORD } = require("../config");
