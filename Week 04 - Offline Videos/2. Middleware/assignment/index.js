@@ -45,18 +45,21 @@ app.post("/post", (req, res) => {
 });
 
 app.put("/update/:name", (req, res) => {
-  const name = req.params;
-  const { health } = req.body;
-  const updatedHealth = helthReport.find((kid) => {
-    if (kid.name === name) {
-      kid.health = health;
-    }
-  });
-  return res.json({ "updated health": updatedHealth });
+  try {
+    const name = req.params.name;
+    const { health } = req.body;
+    const updatedHealth = helthReport.find((kid) => {
+      return kid.name === name;
+    });
+    updatedHealth.health = health;
+    return res.json({ "updated health": helthReport });
+  } catch (error) {
+    throw new error("erri", error);
+  }
 });
 
 app.delete("/delete/:name", (req, res) => {
-  const name = req.params;
+  const name = req.params.name;
   const deltatiomn = helthReport.filter((fill) => fill.name !== name);
   return res.json({ deltatiomn });
 });
