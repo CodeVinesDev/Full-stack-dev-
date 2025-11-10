@@ -14,6 +14,8 @@ const helthReport = [
   },
 ];
 
+app.use(exprss.json());
+
 app.get("/", (req, res) => {
   res.json({ helthReport });
 });
@@ -29,12 +31,17 @@ app.get("/:name", (req, res) => {
 });
 
 app.post("/post", (req, res) => {
-  const { name, kidney, health } = req.body;
-  helthReport.push({
-    name: name,
-    kidney,
-    health,
-  });
+  try {
+    const { name, kidney, health } = req.body;
+    helthReport.push({
+      name: name,
+      kidney,
+      health,
+    });
+    return res.json({ helthReport });
+  } catch (error) {
+    throw new error("erri", error);
+  }
 });
 
 app.put("/update/:name", (req, res) => {
