@@ -46,7 +46,7 @@ app.get("/files/:filename", async (req, res) => {
     const content = await fs.promises.readFile(filePath, "utf-8");
 
     return res.json({
-      filename: filename,
+      //   filename: filename,
       content: content,
     });
   } catch (err) {
