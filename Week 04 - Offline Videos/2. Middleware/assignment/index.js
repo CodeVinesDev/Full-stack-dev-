@@ -15,7 +15,21 @@
 // const app = express();
 // app.use(express.json());
 
-// // ✅ GET all data
+//     completed: false,
+//   },
+//   {
+//     id: 2,
+//     title: "second todo",
+//     description: "second check the todo",
+//     completed: true,
+//   },
+//   {
+//     id: 3,
+//     title: "third todo",
+//     description: "third check the todo",
+//     completed: false,
+//   },
+// ];// ✅ GET all data
 // app.get("/", (req, res) => {
 //   res.json({ helthReport });
 // });
@@ -89,84 +103,191 @@
 // });
 
 //  &****************** assignmnet 2 **********
+
+// import express from "express";
+// import { uid } from "uid";
+
+// const app = express();
+// app.use(express.json());
+
+// // In-memory data
+// let todos = [
+//   {
+//     id: 1,
+//     title: "first todo",
+//     description: "first check the todo",
+//
+
+// // 1. GET /todos - Retrieve all todo items
+// app.get("/todos", (req, res) => {
+//   res.status(200).json(todos);
+// });
+
+// // 2. GET /todos/:id - Retrieve a specific todo item by ID
+// app.get("/todos/:id", (req, res) => {
+//   const id = req.params.id;
+//   const todo = todos.find((t) => String(t.id) === id);
+//   if (!todo) return res.status(404).json({ error: "Todo not found" });
+//   res.status(200).json(todo);
+// });
+
+// // 3. POST /todos - Create a new todo item
+// app.post("/todos", (req, res) => {
+//   const { title, description, completed = false } = req.body;
+//   if (!title || !description)
+//     return res
+//       .status(400)
+//       .json({ error: "Title and description are required" });
+
+//   const newTodo = { id: uid(), title, description, completed };
+//   todos.push(newTodo);
+//   res.status(201).json({ id: newTodo.id });
+// });
+
+// // 4. PUT /todos/:id - Update an existing todo item by ID
+// app.put("/todos/:id", (req, res) => {
+//   const id = req.params.id;
+//   const { title, description, completed } = req.body;
+
+//   const todo = todos.find((t) => String(t.id) === id);
+//   if (!todo) return res.status(404).json({ error: "Todo not found" });
+
+//   if (title !== undefined) todo.title = title;
+//   if (description !== undefined) todo.description = description;
+//   if (completed !== undefined) todo.completed = completed;
+
+//   res.status(200).json(todo);
+// });
+
+// // 5. DELETE /todos/:id - Delete a todo item by ID
+// app.delete("/todos/:id", (req, res) => {
+//   const id = req.params.id;
+//   const index = todos.findIndex((t) => String(t.id) === id);
+
+//   if (index === -1) return res.status(404).json({ error: "Todo not found" });
+
+//   todos.splice(index, 1);
+//   res.status(200).json({ message: "Todo deleted successfully" });
+// });
+// // 404 Handler for undefined routes
+// app.use((req, res) => {
+//   res.status(404).json({ error: "Route not found" });
+// });
+
+// app.listen(3000, () => {
+//   console.log("✅ Server started at port 3000");
+// });
+
+// ******* 3 Assignment - Production Ready Todo API ******** \\
+
 import express from "express";
+import fs from "fs/promises";
+import path from "path";
 import { uid } from "uid";
+import { fileURLToPath } from "url";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const app = express();
 app.use(express.json());
 
-// In-memory data
-let todos = [
-  {
-    id: 1,
-    title: "first todo",
-    description: "first check the todo",
-    completed: false,
-  },
-  {
-    id: 2,
-    title: "second todo",
-    description: "second check the todo",
-    completed: true,
-  },
-  {
-    id: 3,
-    title: "third todo",
-    description: "third check the todo",
-    completed: false,
-  },
-];
+const dataFilePath = path.join(__dirname, "file.json");
 
-// 1. GET /todos - Retrieve all todo items
-app.get("/todos", (req, res) => {
-  res.status(200).json(todos);
+// Helper function to read todos
+async function readTodos() {
+  try {
+    const data = await fs.readFile(dataFilePath, "utf-8");
+    return JSON.parse(data || "[]");
+  } catch (err) {
+    if (err.code === "ENOENT") return [];
+    throw err;
+  }
+}
+
+// Helper function to write todos
+async function writeTodos(todos) {
+  await fs.writeFile(dataFilePath, JSON.stringify(todos, null, 2));
+}
+
+// 1. GET /todos - Retrieve all todos
+app.get("/todos", async (req, res) => {
+  try {
+    const todos = await readTodos();
+    res.status(200).json(todos);
+  } catch (err) {
+    res.status(500).json({ error: "Failed to read todos" });
+  }
 });
 
-// 2. GET /todos/:id - Retrieve a specific todo item by ID
-app.get("/todos/:id", (req, res) => {
-  const id = req.params.id;
-  const todo = todos.find((t) => String(t.id) === id);
-  if (!todo) return res.status(404).json({ error: "Todo not found" });
-  res.status(200).json(todo);
+// 2. GET /todos/:id - Retrieve a specific todo
+app.get("/todos/:id", async (req, res) => {
+  try {
+    const todos = await readTodos();
+    const todo = todos.find((t) => String(t.id) === req.params.id);
+    if (!todo) return res.status(404).json({ error: "Todo not found" });
+    res.status(200).json(todo);
+  } catch (err) {
+    res.status(500).json({ error: "Failed to read todo" });
+  }
 });
 
-// 3. POST /todos - Create a new todo item
-app.post("/todos", (req, res) => {
-  const { title, description, completed = false } = req.body;
-  if (!title || !description)
-    return res
-      .status(400)
-      .json({ error: "Title and description are required" });
+// 3. POST /todos - Create a new todo
+app.post("/todos", async (req, res) => {
+  try {
+    const { title, description, completed = false } = req.body;
+    if (!title || !description) {
+      return res
+        .status(400)
+        .json({ error: "Title and description are required" });
+    }
 
-  const newTodo = { id: uid(), title, description, completed };
-  todos.push(newTodo);
-  res.status(201).json({ id: newTodo.id });
+    const todos = await readTodos();
+    const newTodo = { id: uid(), title, description, completed };
+    todos.push(newTodo);
+    await writeTodos(todos);
+
+    res.status(201).json(newTodo);
+  } catch (err) {
+    res.status(500).json({ error: "Failed to create todo" });
+  }
 });
 
-// 4. PUT /todos/:id - Update an existing todo item by ID
-app.put("/todos/:id", (req, res) => {
-  const id = req.params.id;
-  const { title, description, completed } = req.body;
+// 4. PUT /todos/:id - Update a todo
+app.put("/todos/:id", async (req, res) => {
+  try {
+    const { title, description, completed } = req.body;
+    const todos = await readTodos();
+    const todo = todos.find((t) => String(t.id) === req.params.id);
 
-  const todo = todos.find((t) => String(t.id) === id);
-  if (!todo) return res.status(404).json({ error: "Todo not found" });
+    if (!todo) return res.status(404).json({ error: "Todo not found" });
 
-  if (title !== undefined) todo.title = title;
-  if (description !== undefined) todo.description = description;
-  if (completed !== undefined) todo.completed = completed;
+    if (title !== undefined) todo.title = title;
+    if (description !== undefined) todo.description = description;
+    if (completed !== undefined) todo.completed = completed;
 
-  res.status(200).json(todo);
+    await writeTodos(todos);
+    res.status(200).json(todo);
+  } catch (err) {
+    res.status(500).json({ error: "Failed to update todo" });
+  }
 });
 
-// 5. DELETE /todos/:id - Delete a todo item by ID
-app.delete("/todos/:id", (req, res) => {
-  const id = req.params.id;
-  const index = todos.findIndex((t) => String(t.id) === id);
+// 5. DELETE /todos/:id - Delete a todo
+app.delete("/todos/:id", async (req, res) => {
+  try {
+    const todos = await readTodos();
+    const index = todos.findIndex((t) => String(t.id) === req.params.id);
 
-  if (index === -1) return res.status(404).json({ error: "Todo not found" });
+    if (index === -1) return res.status(404).json({ error: "Todo not found" });
 
-  todos.splice(index, 1);
-  res.status(200).json({ message: "Todo deleted successfully" });
+    todos.splice(index, 1);
+    await writeTodos(todos);
+
+    res.status(200).json({ message: "Todo deleted successfully" });
+  } catch (err) {
+    res.status(500).json({ error: "Failed to delete todo" });
+  }
 });
 
 // 404 Handler for undefined routes
@@ -174,6 +295,8 @@ app.use((req, res) => {
   res.status(404).json({ error: "Route not found" });
 });
 
-app.listen(3000, () => {
-  console.log("✅ Server started at port 3000");
+// Start the server
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log(`✅ Server started on port ${PORT}`);
 });
