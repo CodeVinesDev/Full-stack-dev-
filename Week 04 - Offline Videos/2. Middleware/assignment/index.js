@@ -243,7 +243,16 @@ app.put("/todos/:id", (req, res) => {
 });
 
 // 5. DELETE /todos/:id - Delete a todo item by ID
+app.delete("/todos/:id", (req, res) => {
+  const id = req.params.id;
+  const index = todos.findIndex((t) => String(t.id) === id);
 
+  if (index === -1) return res.status(404).json({ error: "Todo not found" });
+
+  todos.splice(index, 1);
+  fs.writeFileSync(dataFilePath, JSON.stringify(todos));
+  res.status(200).json({ message: "Todo deleted successfully" });
+});
 // 404 Handler for undefined routes
 app.use((req, res) => {
   res.status(404).json({ error: "Route not found" });
