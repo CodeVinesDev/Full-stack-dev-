@@ -8,6 +8,7 @@ Your task is to
 
 // import express module using require function and store it in express variable
 const express = require("express");
+import fs from "fs";
 
 // create an express application using express function
 const app = express();
