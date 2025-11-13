@@ -5,7 +5,7 @@ const checkValidatiom = (req, res, next) => {
   let req = req.path;
   console.log("date is now", new Date.now());
   console.log("method is this", req.method);
-  //  call the next func
+  //  call the next function
   next();
 };
 
