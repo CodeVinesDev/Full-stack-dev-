@@ -36,4 +36,5 @@ app.use((err, req, res, next) => {
 });
 
 // Start the server on port 3000
+//  start the server in 3000
 app.listen(3000);
