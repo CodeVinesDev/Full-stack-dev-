@@ -20,11 +20,11 @@ app.get("/user", function (req, res) {
   res.status(200).json({ name: "john doe" });
 });
 
-app.post("/user", function (req, res) {
+app.post("api/user", function (req, res) {
   res.status(200).json({ msg: "created dummy users" });
 });
 
-app.get("/errorCount", function (req, res) {
+app.get("api/errorCounts", function (req, res) {
   res.status(200).json({ errorCount });
 });
 
