@@ -8,30 +8,31 @@ Your task is to
 
 // import express module using require function and store it in express variable
 const express = require("express");
+import fs from "fs";
 
 // create an express application using express function
 const app = express();
 
-// create a global variable errorCount and assign it a value of 0
+// create a global variable errorCount and assign it a value of 0-
 let errorCount = 0;
 
 app.get("/user", function (req, res) {
-    throw new Error("Some Error");
-    res.status(200).json({ name: "john" });
+  throw new Error("Some Error");
+  res.status(200).json({ name: "john doe" });
 });
 
-app.post("/user", function (req, res) {
-    res.status(200).json({ msg: "created dummy user" });
+app.post("api/user", function (req, res) {
+  res.status(200).json({ msg: "created dummy users" });
 });
 
-app.get("/errorCount", function (req, res) {
-    res.status(200).json({ errorCount });
+app.get("api/errorCounts", function (req, res) {
+  res.status(200).json({ errorCount });
 });
 
 // Error Handling Middleware
 app.use((err, req, res, next) => {
-    res.status(404).send({});
-    errorCount++;
+  res.status(404).send({});
+  errorCount++;
 });
 
 // Start the server on port 3000
