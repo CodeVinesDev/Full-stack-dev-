@@ -108,6 +108,9 @@ const App = () => {
     setForm({ title: "", dec: "" });
   };
 
+  const editTODO = () => {};
+  const deleteTodo = () => {};
+
   return (
     <div>
       <h1 style={{ textAlign: "center" }}>Todo App</h1>
@@ -133,8 +136,8 @@ const App = () => {
           <h1>{todo.title}</h1>
           <p>{todo.dec}</p>
           <div>
-            <button>edit</button>
-            <button>delete</button>
+            <button onClick={editTODO}>edit</button>
+            <button onClick={deleteTodo}>delete</button>
           </div>
         </div>
       ))}
