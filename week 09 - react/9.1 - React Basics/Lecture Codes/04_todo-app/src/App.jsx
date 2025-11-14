@@ -96,39 +96,40 @@ import { useState } from "react";
 // // Export the App component as default
 // export default App;
 const App = () => {
-  const [title, setTitle] = useState("");
-  const [dec, setDec] = useState("");
+  const [form, setForm] = useState({
+    title: "",
+    dec: "",
+  });
+
   const [todos, setTodos] = useState([]);
 
-  const addTodos = () => {
-    const newTodo = { title, dec };
-    setTodos([...todos, newTodo]);
-
-    setTitle("");
-    setDec("");
+  const addTodo = () => {
+    setTodos([...todos, form]);
+    setForm({ title: "", dec: "" }); // clear inputs
   };
 
   return (
     <div>
-      <h1 style={{ textAlign: "center" }}>Todo app</h1>
+      <h1 style={{ textAlign: "center" }}>Todo App</h1>
 
       <input
         type="text"
-        value={title}
+        value={form.title}
         placeholder="title"
-        onChange={(e) => setTitle(e.target.value)}
-      />
-      <input
-        type="text"
-        value={dec}
-        placeholder="description"
-        onChange={(e) => setDec(e.target.value)}
+        onChange={(e) => setForm({ ...form, title: e.target.value })}
       />
 
-      <button onClick={addTodos}>Add Todo</button>
+      <input
+        type="text"
+        value={form.dec}
+        placeholder="description"
+        onChange={(e) => setForm({ ...form, dec: e.target.value })}
+      />
+
+      <button onClick={addTodo}>Add Todo</button>
 
       {todos.map((todo, index) => (
-        <div key={index} style={{ display: "flex", gap: "23px" }}>
+        <div key={index} style={{ display: "flex", gap: "20px" }}>
           <h1>{todo.title}</h1>
           <p>{todo.dec}</p>
         </div>
