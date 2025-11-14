@@ -1,6 +1,8 @@
 // // Import useState hook from React for managing state
 // import { useState } from "react";
 
+import { useState } from "react";
+
 // // Import the CSS file for styling
 // import "./App.css";
 
@@ -93,17 +95,44 @@
 
 // // Export the App component as default
 // export default App;
-
 const App = () => {
+  const [title, setTitle] = useState("");
+  const [dec, setDec] = useState("");
+  const [todos, setTodos] = useState([]);
+
+  const addTodos = () => {
+    const newTodo = { title, dec };
+    setTodos([...todos, newTodo]);
+
+    setTitle("");
+    setDec("");
+  };
+
   return (
     <div>
-      <h1
-        style={{
-          textAlign: "center",
-        }}
-      >
-        Todo app
-      </h1>
+      <h1 style={{ textAlign: "center" }}>Todo app</h1>
+
+      <input
+        type="text"
+        value={title}
+        placeholder="title"
+        onChange={(e) => setTitle(e.target.value)}
+      />
+      <input
+        type="text"
+        value={dec}
+        placeholder="description"
+        onChange={(e) => setDec(e.target.value)}
+      />
+
+      <button onClick={addTodos}>Add Todo</button>
+
+      {todos.map((todo, index) => (
+        <div key={index} style={{ display: "flex", gap: "23px" }}>
+          <h1>{todo.title}</h1>
+          <p>{todo.dec}</p>
+        </div>
+      ))}
     </div>
   );
 };
