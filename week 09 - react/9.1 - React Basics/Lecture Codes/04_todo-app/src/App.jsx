@@ -105,7 +105,7 @@ const App = () => {
 
   const addTodo = () => {
     setTodos([...todos, form]);
-    setForm({ title: "", dec: "" }); // clear inputs
+    setForm({ title: "", dec: "" });
   };
 
   return (
@@ -132,6 +132,10 @@ const App = () => {
         <div key={index} style={{ display: "flex", gap: "20px" }}>
           <h1>{todo.title}</h1>
           <p>{todo.dec}</p>
+          <div>
+            <button>edit</button>
+            <button>delete</button>
+          </div>
         </div>
       ))}
     </div>
