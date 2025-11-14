@@ -95,6 +95,9 @@ import { useState } from "react";
 
 // // Export the App component as default
 // export default App;
+
+//  *************  todo app **********
+
 const App = () => {
   const [form, setForm] = useState({
     title: "",
@@ -102,14 +105,25 @@ const App = () => {
   });
 
   const [todos, setTodos] = useState([]);
+  const [editIndex, setEditIndex] = useState(null);
 
   const addTodo = () => {
-    setTodos([...todos, form]);
+    if (editIndex !== null) {
+      const updated = [...todos];
+      updated[editIndex] = form;
+      setTodos(updated);
+      setEditIndex(null);
+    } else {
+      setTodos([...todos, form]);
+    }
+
     setForm({ title: "", dec: "" });
   };
 
-  const editTODO = () => {};
-  const deleteTodo = () => {};
+  const deleteTodo = (id) => {
+    const update = todos.filter((t, index) => index !== id);
+    setTodos(update);
+  };
 
   return (
     <div>
@@ -129,15 +143,24 @@ const App = () => {
         onChange={(e) => setForm({ ...form, dec: e.target.value })}
       />
 
-      <button onClick={addTodo}>Add Todo</button>
+      <button onClick={addTodo}>
+        {editIndex !== null ? "Update Todo" : "Add Todo"}
+      </button>
 
       {todos.map((todo, index) => (
         <div key={index} style={{ display: "flex", gap: "20px" }}>
           <h1>{todo.title}</h1>
           <p>{todo.dec}</p>
           <div>
-            <button onClick={editTODO}>edit</button>
-            <button onClick={deleteTodo}>delete</button>
+            <button
+              onClick={() => {
+                setEditIndex(index);
+                setForm(todo);
+              }}
+            >
+              edit
+            </button>
+            <button onClick={() => deleteTodo(index)}>delete</button>
           </div>
         </div>
       ))}
