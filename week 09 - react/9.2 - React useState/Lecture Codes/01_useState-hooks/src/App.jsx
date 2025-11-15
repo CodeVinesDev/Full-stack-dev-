@@ -54,25 +54,71 @@
 
 // export default App;
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 const App = () => {
-  const [value, setVALur] = useState(0);
+  // Initialize state with the value from localStorage, or default to 0 if not found
+  const [value, setVALur] = useState(() => {
+    const saved = Number(localStorage.getItem("value"));
+    return saved ? saved : 0;
+  });
 
   const add = () => {
     setVALur((prev) => prev + 1);
-    localStorage.setItem("value", value);
   };
+
   const minus = () => {
     setVALur((prev) => prev - 1);
   };
+
+  // Sync localStorage with the current value whenever it changes
+  useEffect(() => {
+    localStorage.setItem("value", value);
+  }, [value]); // <-- Here we pass the value inside an array!
+
   return (
     <div>
       <h1>{value}</h1>
-      <button onClick={add}>add</button>
-      <button onClick={minus}>minus</button>
+      <button onClick={add}>Add</button>
+      <button onClick={minus}>Minus</button>
     </div>
   );
 };
 
 export default App;
+
+// import React, { useState } from "react";
+// import { useEffect } from "react";
+// const [data, setdata] = useState([]);
+// const [loading, setloding] = useState(false);
+
+// const App = () => {
+//   useEffect(() => {
+//     setloding(true);
+//     try {
+//       const fetch = () => {
+//         const res = fetch("");
+//         const data = res.json();
+//         setdata(data);
+//       };
+//     } catch (error) {
+//       setloding(false);
+//       console.log("err", error);
+//     }
+
+//     fetch();
+//   }, []);
+//   console.log("data", data);
+
+//   return (
+//     <div>
+//       <h1>
+//         {data.map((data) => {
+//           return data;
+//         })}
+//       </h1>
+//     </div>
+//   );
+// };
+
+// export default App;
