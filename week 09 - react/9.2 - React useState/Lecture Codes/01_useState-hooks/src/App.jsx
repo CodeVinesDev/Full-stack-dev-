@@ -86,39 +86,54 @@
 // };
 
 // export default App;
+import React, { useState, useEffect } from "react";
 
-// import React, { useState } from "react";
-// import { useEffect } from "react";
-// const [data, setdata] = useState([]);
-// const [loading, setloding] = useState(false);
+const App = () => {
+  const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
 
-// const App = () => {
-//   useEffect(() => {
-//     setloding(true);
-//     try {
-//       const fetch = () => {
-//         const res = fetch("");
-//         const data = res.json();
-//         setdata(data);
-//       };
-//     } catch (error) {
-//       setloding(false);
-//       console.log("err", error);
-//     }
+  useEffect(() => {
+    const fetchData = async () => {
+      setLoading(true);
+      try {
+        const res = await fetch("https://dummyjson.com/users");
+        const result = await res.json();
+        setData(result.users);
+      } catch (err) {
+        setError("Failed to fetch users");
+      } finally {
+        setLoading(false); // ALWAYS runs
+      }
+    };
 
-//     fetch();
-//   }, []);
-//   console.log("data", data);
+    fetchData();
+  }, []);
 
-//   return (
-//     <div>
-//       <h1>
-//         {data.map((data) => {
-//           return data;
-//         })}
-//       </h1>
-//     </div>
-//   );
-// };
+  return (
+    <div>
+      <h1>Users</h1>
 
-// export default App;
+      {/* Loading State */}
+      {loading && <h2>Loading...</h2>}
+
+      {/* Error State */}
+      {error && <h2 style={{ color: "red" }}>{error}</h2>}
+
+      {/* Data List */}
+      {!loading &&
+        !error &&
+        data.map((user) => (
+          <div key={user.id}>
+            <h2>
+              {user.firstName} {user.lastName}
+            </h2>
+            <p>Card: {user.bank.cardType}</p>
+            <hr />
+          </div>
+        ))}
+    </div>
+  );
+};
+
+export default App;
