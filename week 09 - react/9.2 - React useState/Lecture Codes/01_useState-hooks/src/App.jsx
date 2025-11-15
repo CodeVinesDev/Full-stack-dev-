@@ -54,38 +54,38 @@
 
 // export default App;
 
-import React, { useState, useEffect } from "react";
+// import React, { useState, useEffect } from "react";
 
-const App = () => {
-  // Initialize state with the value from localStorage, or default to 0 if not found
-  const [value, setVALur] = useState(() => {
-    const saved = Number(localStorage.getItem("value"));
-    return saved ? saved : 0;
-  });
+// const App = () => {
+//   // Initialize state with the value from localStorage, or default to 0 if not found
+//   const [value, setVALur] = useState(() => {
+//     const saved = Number(localStorage.getItem("value"));
+//     return saved ? saved : 0;
+//   });
 
-  const add = () => {
-    setVALur((prev) => prev + 1);
-  };
+//   const add = () => {
+//     setVALur((prev) => prev + 1);
+//   };
 
-  const minus = () => {
-    setVALur((prev) => prev - 1);
-  };
+//   const minus = () => {
+//     setVALur((prev) => prev - 1);
+//   };
 
-  // Sync localStorage with the current value whenever it changes
-  useEffect(() => {
-    localStorage.setItem("value", value);
-  }, [value]); // <-- Here we pass the value inside an array!
+//   // Sync localStorage with the current value whenever it changes
+//   useEffect(() => {
+//     localStorage.setItem("value", value);
+//   }, [value]); // <-- Here we pass the value inside an array!
 
-  return (
-    <div>
-      <h1>{value}</h1>
-      <button onClick={add}>Add</button>
-      <button onClick={minus}>Minus</button>
-    </div>
-  );
-};
+//   return (
+//     <div>
+//       <h1>{value}</h1>
+//       <button onClick={add}>Add</button>
+//       <button onClick={minus}>Minus</button>
+//     </div>
+//   );
+// };
 
-export default App;
+// export default App;
 
 // import React, { useState } from "react";
 // import { useEffect } from "react";
