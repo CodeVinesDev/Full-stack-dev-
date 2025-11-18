@@ -34,7 +34,16 @@ function App() {
 function Card({ children }) {
   return (
     // Apply inline styles for background, border, padding, margin, and shadow
-    <div>
+    <div
+      style={{
+        background: "white",
+        borderRadius: 10,
+        border: "1px solid #ccc",
+        padding: "10px",
+        margin: "10px",
+        boxShadow: "2px 2px 5px rgba(0, 0, 0, 0.1)",
+      }}
+    >
       {/* Render any children elements passed to the Card component */}
       {children}
     </div>
