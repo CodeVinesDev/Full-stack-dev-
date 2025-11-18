@@ -31,6 +31,15 @@ function App() {
 }
 
 // Create a Card component that will render children elements passed to it as props
+function Card({ children }) {
+  return (
+    // Apply inline styles for background, border, padding, margin, and shadow
+    <div>
+      {/* Render any children elements passed to the Card component */}
+      {children}
+    </div>
+  );
+}
 
 // Export the App component as the default export to be used in other files or components
 export default App;
