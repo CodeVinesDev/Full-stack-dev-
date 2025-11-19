@@ -19,18 +19,18 @@ function App() {
 
   // return JSX that will be rendered
   return (
-    <div style={{ background: "#dfe6e9", minHeight: "100vh", padding: 20 }}>
+    <div style={{ background: "#dfe6e9", minHeight: "100vh", padding: 24 }}>
       {/* Display the count state in a div */}
       <div
         style={{
-          background: "red",
-          borderRadius: 30,
+          background: "green",
+          borderRadius: 33,
           width: 30,
           height: 30,
-          paddingLeft: 10,
+          paddingLeft: 14,
           paddingTop: 5,
           position: "relative",
-          left: 12,
+          left: 14,
         }}
       >
         {count}
