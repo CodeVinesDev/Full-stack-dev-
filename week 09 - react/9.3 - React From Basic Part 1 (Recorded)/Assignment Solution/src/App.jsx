@@ -14,7 +14,10 @@ function App() {
           alignItems: "center",
         }}
       >
-        <div></div>
+        <div>
+          <PostComponent />
+          <ProfileComponent />
+        </div>
       </div>
     </div>
   );
