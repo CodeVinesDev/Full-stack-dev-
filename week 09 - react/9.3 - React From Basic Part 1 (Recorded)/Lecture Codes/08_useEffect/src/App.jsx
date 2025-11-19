@@ -10,7 +10,7 @@ function App() {
   useEffect(() => {
     // setInterval function to update the count state every 5 seconds
     const interval = setInterval(() => {
-      setCount((prev) => prev + 2); // Update the count state by 1
+      setCount((prev) => prev + 1); // Update the count state by 1
     }, 5000);
 
     // Return a cleanup function to clear the interval when the component unmounts
@@ -19,18 +19,18 @@ function App() {
 
   // return JSX that will be rendered
   return (
-    <div style={{ background: "#dfe6e9", minHeight: "100vh", padding: 24 }}>
+    <div style={{ background: "#dfe6e9", minHeight: "100vh", padding: 20 }}>
       {/* Display the count state in a div */}
       <div
         style={{
-          background: "green",
-          borderRadius: 33,
+          background: "red",
+          borderRadius: 30,
           width: 30,
           height: 30,
-          paddingLeft: 14,
+          paddingLeft: 10,
           paddingTop: 5,
           position: "relative",
-          left: 14,
+          left: 12,
         }}
       >
         {count}
