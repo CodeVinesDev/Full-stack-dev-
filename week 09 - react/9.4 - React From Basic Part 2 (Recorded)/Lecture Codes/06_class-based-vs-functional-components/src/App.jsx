@@ -6,8 +6,39 @@ function App() {
   // Render the JSX that will be rendered in the browser
   return (
     // Create a div element with JSX
-    <div>{/* Render the ClassCounter component  */}</div>
+    <div>
+      {/* Render the ClassCounter component  */}
+      <ClassCounter />
+
+      {/* Render the ClassCounter component  */}
+    </div>
   );
+}
+
+// Create a class-based component ClassCounter that will render a div element with a count property
+class ClassCounter extends Component {
+  // Create a state object with a count property set to 0
+  state = { count: 0 };
+
+  // Create a method named increment that will increment the count property by 1
+  increment = () => {
+    // Set the state of the count property to the current count plus 1 using setState method
+    this.setState({ count: this.state.count + 1 });
+  };
+
+  // Render the JSX that will be rendered in the browser
+  render() {
+    return (
+      // Create a div element with JSX
+      <div>
+        {/* Render the count property from the state object */}
+        <p>Count: {this.state.count}</p>
+
+        {/* Create a button element with an onClick event that will call the increment method */}
+        <button onClick={this.increment}>Increment</button>
+      </div>
+    );
+  }
 }
 
 // Export the App component as the default export to be used in other files or components
