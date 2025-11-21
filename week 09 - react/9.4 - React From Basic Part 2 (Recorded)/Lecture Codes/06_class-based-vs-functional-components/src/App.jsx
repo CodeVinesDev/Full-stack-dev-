@@ -36,7 +36,7 @@ class ClassCounter extends Component {
         <p>Count: {this.state.count}</p>
 
         {/* Create a button element with an onClick event that will call the increment method */}
-        <button onClick={this.increment}>Increment</button>
+        <button onClick={this.increment}>Increment +</button>
       </div>
     );
   }
