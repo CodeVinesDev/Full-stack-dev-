@@ -28,5 +28,5 @@ function MyComponent() {
   );
 }
 
-// Export the App component as the default export to be used in other files or components
+// Export the App component as the default export to be used in other files or components ,
 export default App;
