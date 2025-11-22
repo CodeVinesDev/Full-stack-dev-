@@ -20,7 +20,7 @@ function MyComponent() {
         backgroundColor: "blue",
         color: "white",
         padding: 10,
-        borderRadius: 20,
+        borderRadius: 26,
       }}
     >
       Hello, World!
@@ -28,5 +28,5 @@ function MyComponent() {
   );
 }
 
-// Export the App component as the default export to be used in other files or components
+// Export the App component as the default export to be used in other files or components ,
 export default App;
