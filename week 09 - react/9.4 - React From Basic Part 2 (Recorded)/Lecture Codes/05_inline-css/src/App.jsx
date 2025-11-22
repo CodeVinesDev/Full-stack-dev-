@@ -20,7 +20,7 @@ function MyComponent() {
         backgroundColor: "blue",
         color: "white",
         padding: 10,
-        borderRadius: 20,
+        borderRadius: 26,
       }}
     >
       Hello, World!
