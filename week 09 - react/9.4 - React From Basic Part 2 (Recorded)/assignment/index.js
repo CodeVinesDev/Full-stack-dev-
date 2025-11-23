@@ -1,5 +1,5 @@
 const fs = require("fs");
 
-//   slide link = https://petal-estimate-4e9.notion.site/React-Part-1-1177dfd1073580069172fc54e33929c0
+// %%%%%%%%%%%%%  slide link = https://petal-estimate-4e9.notion.site/React-Part-1-1177dfd1073580069172fc54e33929c0
 
 // react classes basic 0 - 1
