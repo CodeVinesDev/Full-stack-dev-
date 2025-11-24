@@ -18,9 +18,34 @@
 
 // // Export the App component to use it in the other files
 // export default App;
-
+import { ThemeContext, ContextProvide } from "./context/Theme";
+import { useContext } from "react";
 const App = () => {
-  return <h1>hii</h1>;
+  return (
+    <ContextProvide>
+      <Content />
+    </ContextProvide>
+  );
 };
 
 export default App;
+
+const Content = () => {
+  const { theme, settheme } = useContext(ThemeContext);
+
+  return (
+    <div>
+      <h1
+        style={{
+          color: theme == "dark" ? "white" : "black",
+          backgroundColor: theme == "dark" ? "black " : "white",
+        }}
+      >
+        Current theme: {theme}
+      </h1>
+      <button onClick={() => settheme(theme == "light" ? "dark" : "light")}>
+        chanbge
+      </button>
+    </div>
+  );
+};
