@@ -20,6 +20,7 @@
 // export default App;
 import { ThemeContext, ContextProvide } from "./context/Theme";
 import { useContext } from "react";
+
 const App = () => {
   return (
     <ContextProvide>
@@ -37,14 +38,15 @@ const Content = () => {
     <div>
       <h1
         style={{
-          color: theme == "dark" ? "white" : "black",
-          backgroundColor: theme == "dark" ? "black " : "white",
+          color: theme === "dark" ? "white" : "black",
+          backgroundColor: theme === "dark" ? "black" : "white",
+          padding: "10px",
         }}
       >
         Current theme: {theme}
       </h1>
-      <button onClick={() => settheme(theme == "light" ? "dark" : "light")}>
-        chanbge
+      <button onClick={() => settheme(theme === "light" ? "dark" : "light")}>
+        Change Theme
       </button>
     </div>
   );
