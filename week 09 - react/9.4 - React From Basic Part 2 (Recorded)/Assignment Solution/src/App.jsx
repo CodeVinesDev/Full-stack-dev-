@@ -6,7 +6,10 @@ function App() {
   // return JSX that will be rendered
   return (
     // Create a div element
-    <div></div>
+    <div>
+      {/* Add a heading */}
+      <h1>Linkedin Notifications Count</h1>
+    </div>
   );
 }
 
