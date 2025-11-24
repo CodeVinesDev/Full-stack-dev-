@@ -9,6 +9,9 @@ function App() {
     <div>
       {/* Add a heading */}
       <h1>Linkedin Notifications Count</h1>
+
+      {/* Render the Notifications component */}
+      <Notifications />
     </div>
   );
 }
