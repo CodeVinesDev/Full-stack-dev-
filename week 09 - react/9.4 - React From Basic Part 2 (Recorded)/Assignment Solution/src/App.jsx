@@ -92,6 +92,10 @@ const Login = () => {
           <button onClick={handleLogin}>Login</button>
         </>
       )}
+
+      <button onClick={() => logout()} style={{ marginLeft: "5px" }}>
+        Logout
+      </button>
     </div>
   );
 };
