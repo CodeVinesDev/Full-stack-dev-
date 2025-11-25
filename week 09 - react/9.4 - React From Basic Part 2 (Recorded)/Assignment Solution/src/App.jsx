@@ -123,3 +123,18 @@
 // };
 
 // export default App;
+
+import useToggle from "./hook/settime";
+
+const App = () => {
+  const { toggle, toggleChange } = useToggle(true);
+
+  return (
+    <>
+      <h1>{toggle ? "ON" : "OFF"}</h1>
+      <button onClick={toggleChange}>Toggle</button>
+    </>
+  );
+};
+
+export default App;
