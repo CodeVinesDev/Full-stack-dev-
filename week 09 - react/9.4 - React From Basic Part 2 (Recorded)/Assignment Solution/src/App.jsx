@@ -100,14 +100,26 @@
 //   );
 // };
 
-import useFetch from "./hook/data";
-const App = () => {
-  const { data, error, laoding } = useFetch();
-  console.log("data", data);
-  console.log("loadimng", laoding);
-  console.log("error", error);
+// import useFetch from "./hook/data";
+// const App = () => {
+//   const { data, error, laoding } = useFetch();
+//   console.log("data", data);
+//   console.log("loadimng", laoding);
+//   console.log("error", error);
 
-  return <h1>{data.title}</h1>;
+//   return <h1>{data.title}</h1>;
+// };
+
+// export default App;
+
+import useInterval from "./hook/settime";
+
+const App = () => {
+  useInterval(() => {
+    alert("timeis ");
+  }, 4000);
+
+  return <h1>Wait for it...</h1>;
 };
 
 export default App;
