@@ -112,14 +112,14 @@
 
 // export default App;
 
-import useInterval from "./hook/settime";
+// import useInterval from "./hook/settime";
 
-const App = () => {
-  useInterval(() => {
-    alert("timeis ");
-  }, 4000);
+// const App = () => {
+//   useInterval(() => {
+//     alert("timeis ");
+//   }, 4000);
 
-  return <h1>Wait for it...</h1>;
-};
+//   return <h1>Wait for it...</h1>;
+// };
 
-export default App;
+// export default App;
