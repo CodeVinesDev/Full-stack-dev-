@@ -107,7 +107,7 @@ const App = () => {
   console.log("loadimng", laoding);
   console.log("error", error);
 
-  return <h1></h1>;
+  return <h1>{data.title}</h1>;
 };
 
 export default App;
