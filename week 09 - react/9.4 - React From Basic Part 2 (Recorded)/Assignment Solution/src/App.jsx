@@ -51,9 +51,47 @@
 //     </div>
 //   );
 // };
+import { useContext, useState } from "react";
+import { AuthContext, AuthProvider } from "./context/Auth";
 
 const App = () => {
-  return <h1>hii</h1>;
+  return (
+    <AuthProvider>
+      <Login />
+      <Users />
+    </AuthProvider>
+  );
 };
 
 export default App;
+
+const Users = () => {
+  const { user } = useContext(AuthContext);
+  return <h1>{user ? `Welcome ${user}` : "No user logged in"}</h1>;
+};
+
+const Login = () => {
+  const { user, login, logout } = useContext(AuthContext);
+  const [host, sethost] = useState("");
+
+  const handleLogin = () => {
+    if (host.trim() !== "") login(host.trim());
+  };
+
+  return (
+    <div style={{ margin: "10px 0" }}>
+      {user === "" && (
+        <>
+          <input
+            type="text"
+            value={host}
+            onChange={(e) => sethost(e.target.value)}
+            style={{ border: "2px solid red", marginRight: "5px" }}
+            placeholder="Enter username"
+          />
+          <button onClick={handleLogin}>Login</button>
+        </>
+      )}
+    </div>
+  );
+};
