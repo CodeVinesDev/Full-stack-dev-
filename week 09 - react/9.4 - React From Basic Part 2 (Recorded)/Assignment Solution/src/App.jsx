@@ -112,29 +112,29 @@
 
 // export default App;
 
-// import useInterval from "./hook/settime";
-
-// const App = () => {
-//   useInterval(() => {
-//     alert("timeis ");
-//   }, 4000);
-
-//   return <h1>Wait for it...</h1>;
-// };
-
-// export default App;
-
-import useToggle from "./hook/settime";
+import useInterval from "./hook/settime";
 
 const App = () => {
-  const { toggle, toggleChange } = useToggle(true);
+  useInterval(() => {
+    alert("timeis ");
+  }, 4000);
 
-  return (
-    <>
-      <h1>{toggle ? "ON" : "OFF"}</h1>
-      <button onClick={toggleChange}>Toggle</button>
-    </>
-  );
+  return <h1>Wait for it...</h1>;
 };
 
 export default App;
+
+// import useToggle from "./hook/settime";
+
+// const App = () => {
+//   const { toggle, toggleChange } = useToggle(true);
+
+//   return (
+//     <>
+//       <h1>{toggle ? "ON" : "OFF"}</h1>
+//       <button onClick={toggleChange}>Toggle</button>
+//     </>
+//   );
+// };
+
+// export default App;
