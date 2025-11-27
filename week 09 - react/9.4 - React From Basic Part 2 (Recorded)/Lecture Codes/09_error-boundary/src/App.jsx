@@ -35,5 +35,41 @@ function Card1() {
   );
 }
 
+// Create a function component named Card2 that will be rendered in the App component
+function Card2() {
+  // Return the JSX that will be rendered in the browser
+  return (
+    // Renders the content of Card2 with styling and padding, no errors thrown here.
+    <div
+      style={{
+        background: "red",
+        borderRadius: 10,
+        padding: 20,
+        marginTop: 20,
+      }}
+    >
+      <h2>Card 2</h2>
+    </div>
+  );
+}
+
+// Create a function component named Card3 that will be rendered in the App component
+function Card3() {
+  // Return the JSX that will be rendered in the browser
+  return (
+    // Renders the content of Card3 with styling similar to Card2.
+    <div
+      style={{
+        background: "red",
+        borderRadius: 10,
+        padding: 20,
+        marginTop: 20,
+      }}
+    >
+      <h2>Card 3</h2>
+    </div>
+  );
+}
+
 // Exporting the main App component for use in the application.
 export default App;
