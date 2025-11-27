@@ -21,5 +21,19 @@ const App = () => {
   );
 };
 
+// Create a function component named Card1 that will be rendered in the App component
+function Card1() {
+  // Throw an error to simulate a rendering error in the component.
+  throw new Error("Error While Rendering Card 1");
+
+  // Return the JSX that will be rendered in the browser
+  return (
+    // Renders the content of Card1 (though this code is unreachable due to the thrown error).
+    <div style={{ background: "red", borderRadius: 10, padding: 20 }}>
+      <h2>Card 1</h2>
+    </div>
+  );
+}
+
 // Exporting the main App component for use in the application.
 export default App;
