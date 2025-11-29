@@ -60,7 +60,7 @@ function Card3() {
     // Renders the content of Card3 with styling similar to Card2.
     <div
       style={{
-        background: "red",
+        background: "purple",
         borderRadius: 10,
         padding: 20,
         marginTop: 20,
