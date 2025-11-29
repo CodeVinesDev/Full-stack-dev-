@@ -20,8 +20,10 @@ const MyComponent = () => {
   // Return the JSX that will be rendered in the browser
   return (
     // Wrap the JSX in a Fragment to avoid adding an extra div element to the DOM
-
-    <h2>Hello</h2>
+    <Fragment>
+      <h2>Hello</h2>
+      <p>World</p>
+    </Fragment>
   );
 };
 
