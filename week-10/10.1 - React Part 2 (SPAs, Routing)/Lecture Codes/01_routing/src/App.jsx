@@ -20,6 +20,22 @@ function App() {
         <Link to="/neet/online-coaching-class-11">Class 11</Link> |{" "}
         <Link to="/neet/online-coaching-class-12">Class 12</Link>
         {/* Define the routes for different pages */}
+        <Routes>
+          <Route path="/" element={<Landing />} />{" "}
+          {/* Route for the landing page, mapped to the "/" path */}
+          <Route
+            path="/neet/online-coaching-class-11"
+            element={<Class11Program />}
+          />{" "}
+          {/* Route for Class 11 NEET program page */}
+          <Route
+            path="/neet/online-coaching-class-12"
+            element={<Class12Program />}
+          />{" "}
+          {/* Route for Class 12 NEET program page */}
+          <Route path="*" element={<ErrorPage />} />{" "}
+          {/* Route for handling unmatched paths, rendering a 404 error page */}
+        </Routes>
       </BrowserRouter>
     </div>
   );
