@@ -34,5 +34,32 @@ function Parent() {
   );
 }
 
+// Create a function component named Decrease to decrease the count
+function Decrease({ count, setCount }) {
+  // Return the JSX for the component
+  return (
+    // Button to decrease the count on click using the setCount function with the updated value of count
+    <button onClick={() => setCount(count - 1)}>Decrease</button>
+  );
+}
+
+// Create a function component named Incrase to increase the count
+function Incrase({ count, setCount }) {
+  // Return the JSX for the component
+  return (
+    // Button to increase the count on click using the setCount function with the updated value of count
+    <button onClick={() => setCount(count + 1)}>Increase</button>
+  );
+}
+
+// Create a function component named Value to display the count
+function Value({ count }) {
+  // Return the JSX for the component
+  return (
+    // Display the count value using the count prop
+    <p>Count: {count}</p>
+  );
+}
+
 // Export the App component as the default export to be used in other files or components
 export default App;
