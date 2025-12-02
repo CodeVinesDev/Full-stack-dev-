@@ -47,7 +47,7 @@ function Decrease({ count, setCount }) {
 function Incrase({ count, setCount }) {
   // Return the JSX for the component
   return (
-    // Button to increase the count on click using the setCount function with the updated value of count
+    // Button to increase the count on click using the setCount function with the  //updated value of count
     <button onClick={() => setCount(count + 1)}>Increase</button>
   );
 }
