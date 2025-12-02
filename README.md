@@ -8,7 +8,7 @@
 
 ## 🔥 **Clone this Repository** 💫
 
-Write the following commands on your terminal to clone this repository, so that you can run this project locally.
+Write the following commands on your terminal to clone this repository, so that you can run this project locally..
 
 ```bash
 git clone https://github.com/Bharat2044/100xDevs-Cohort3-WebDev-and-Devops.git
