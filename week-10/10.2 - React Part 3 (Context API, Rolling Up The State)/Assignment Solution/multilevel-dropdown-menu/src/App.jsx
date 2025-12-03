@@ -25,22 +25,47 @@
 
 //   recoil
 
-import { useRecoilValue, useSetRecoilState } from "recoil";
-import { Counter } from "./store/Counter";
+// import { useRecoilValue, useSetRecoilState } from "recoil";
+// import { Counter } from "./store/Counter";
 
-const Display = () => {
-  const counter = useRecoilValue(Counter);
-  const setCounter = useSetRecoilState(Counter);
+// const Display = () => {
+//   const counter = useRecoilValue(Counter);
+//   const setCounter = useSetRecoilState(Counter);
 
+//   return (
+//     <>
+//       <h1>{counter}</h1>
+
+//       <button onClick={() => setCounter((prev) => prev + 1)}>add</button>
+
+//       <button onClick={() => setCounter((prev) => prev - 1)}>decrease</button>
+//     </>
+//   );
+// };
+
+// export default Display;
+
+import { RecoilRoot } from "recoil";
+function App() {
   return (
     <>
-      <h1>{counter}</h1>
-
-      <button onClick={() => setCounter((prev) => prev + 1)}>add</button>
-
-      <button onClick={() => setCounter((prev) => prev - 1)}>decrease</button>
+      <RecoilRoot>
+        <Counter />
+      </RecoilRoot>
     </>
   );
-};
-
-export default Display;
+}
+export default App;
+function Counter() {
+  return (
+    <>
+      <div className="flex gap-2" style={{ display: "flex", gap: "12px" }}>
+        <button>home</button>
+        <button>notfiaction ()</button>
+        <button>messsage()</button>
+        <button>jobs()</button>
+        <button>network()</button>
+      </div>
+    </>
+  );
+}
