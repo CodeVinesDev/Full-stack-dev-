@@ -45,9 +45,9 @@
 
 // export default Display;
 
-import { RecoilRoot } from "recoil";
+import { RecoilRoot, useRecoilState } from "recoil";
 import { useRecoilValue } from "recoil";
-import { jobs, message, network, notification } from "./store/linkdin";
+import { jobs, message, network, notfication } from "./store/linkdin";
 
 function App() {
   return (
@@ -60,10 +60,10 @@ function App() {
 export default App;
 
 function Counter() {
-  const notificationCount = useRecoilValue(notification);
+  const notificationCount = useRecoilValue(notfication);
   const jobCount = useRecoilValue(jobs);
   const networkCount = useRecoilValue(network);
-  const messagesCount = useRecoilValue(message);
+  const [messagesCount, setstate] = useRecoilState(message);
 
   return (
     <div
@@ -75,9 +75,10 @@ function Counter() {
       <button>
         Notification ({notificationCount >= 100 ? "99+" : notificationCount}){" "}
       </button>
-      <button>Messages ({messagesCount})</button>{" "}
+      <button>Messages ({messagesCount > 50 ? "50+" : messagesCount})</button>{" "}
       <button>Jobs ({jobCount})</button>
       <button>Network ({networkCount})</button>
+      <button onClick={() => setstate((prev) => prev + 10)}>me</button>
     </div>
   );
 }

@@ -1,8 +1,8 @@
 import { atom } from "recoil";
 
-export const notficatiom = atom({
+export const notfication = atom({
   key: "notfication",
-  default: "0",
+  default: 107,
 });
 
 export const network = atom({
