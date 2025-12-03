@@ -47,37 +47,37 @@
 
 import { RecoilRoot } from "recoil";
 import { useRecoilValue } from "recoil";
-import { jobs, message, network, notficatiom } from "./store/linkdin";
+import { jobs, message, network, notification } from "./store/linkdin";
+
 function App() {
   return (
-    <>
-      <RecoilRoot>
-        <Counter />
-      </RecoilRoot>
-    </>
+    <RecoilRoot>
+      <Counter />
+    </RecoilRoot>
   );
 }
+
 export default App;
+
 function Counter() {
-  const notfication = useRecoilValue(notficatiom);
-  const job = useRecoilValue(jobs);
-  const netwtok = useRecoilValue(network);
+  const notificationCount = useRecoilValue(notification);
+  const jobCount = useRecoilValue(jobs);
+  const networkCount = useRecoilValue(network);
   const messagesCount = useRecoilValue(message);
+
   return (
-    <>
-      <div
-        className="flex gap-2"
-        style={{ display: "flex", gap: "12px" }}
-        key={1}
-      >
-        <button>home</button>
-        <button>
-          notfiaction ({notfication >= 100 ? "99+" : notficatiom})
-        </button>
-        <button>messsage({messagesCount})</button>
-        <button>jobs({job})</button>
-        <button>network({netwtok})</button>
-      </div>
-    </>
+    <div
+      className="flex gap-2"
+      style={{ display: "flex", gap: "12px" }}
+      key={1}
+    >
+      <button>Home</button>
+      <button>
+        Notification ({notificationCount >= 100 ? "99+" : notificationCount}){" "}
+      </button>
+      <button>Messages ({messagesCount})</button>{" "}
+      <button>Jobs ({jobCount})</button>
+      <button>Network ({networkCount})</button>
+    </div>
   );
 }
