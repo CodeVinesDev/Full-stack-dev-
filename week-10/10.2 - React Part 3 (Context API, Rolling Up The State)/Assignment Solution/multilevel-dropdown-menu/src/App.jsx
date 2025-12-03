@@ -46,6 +46,8 @@
 // export default Display;
 
 import { RecoilRoot } from "recoil";
+import { useRecoilValue } from "recoil";
+import { jobs, message, network, notficatiom } from "./store/linkdin";
 function App() {
   return (
     <>
@@ -57,14 +59,24 @@ function App() {
 }
 export default App;
 function Counter() {
+  const notfication = useRecoilValue(notficatiom);
+  const job = useRecoilValue(jobs);
+  const netwtok = useRecoilValue(network);
+  const messagesCount = useRecoilValue(message);
   return (
     <>
-      <div className="flex gap-2" style={{ display: "flex", gap: "12px" }}>
+      <div
+        className="flex gap-2"
+        style={{ display: "flex", gap: "12px" }}
+        key={1}
+      >
         <button>home</button>
-        <button>notfiaction ()</button>
-        <button>messsage()</button>
-        <button>jobs()</button>
-        <button>network()</button>
+        <button>
+          notfiaction ({notfication >= 100 ? "99+" : notficatiom})
+        </button>
+        <button>messsage({messagesCount})</button>
+        <button>jobs({job})</button>
+        <button>network({netwtok})</button>
       </div>
     </>
   );
