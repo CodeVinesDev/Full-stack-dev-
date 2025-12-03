@@ -47,7 +47,7 @@
 
 import { RecoilRoot, useSetRecoilState } from "recoil";
 import { useRecoilValue } from "recoil";
-import { jobs, message, network, notfication } from "./store/linkdin";
+import { jobs, message, network, notfication, allsum } from "./store/linkdin";
 
 function App() {
   return (
@@ -85,7 +85,10 @@ function Counter() {
 
 const ButtonPRops = () => {
   const setmessgecount = useSetRecoilState(message);
+  const sumAll = useRecoilValue(allsum);
   return (
-    <button onClick={() => setmessgecount((c) => c + 10)}>add messages</button>
+    <button onClick={() => setmessgecount((c) => c + 10)}>
+      add messages ({sumAll})
+    </button>
   );
 };

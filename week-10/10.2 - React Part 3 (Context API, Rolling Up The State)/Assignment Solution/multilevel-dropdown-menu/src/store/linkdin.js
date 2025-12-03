@@ -1,4 +1,4 @@
-import { atom } from "recoil";
+import { atom, selector } from "recoil";
 
 export const notfication = atom({
   key: "notfication",
@@ -18,4 +18,15 @@ export const jobs = atom({
 export const message = atom({
   key: "message",
   default: 0,
+});
+export const allsum = selector({
+  key: "sum",
+  get: ({ get }) => {
+    const net = get(network);
+    const job = get(jobs);
+    const msg = get(message);
+    const notif = get(notfication);
+
+    return net + job + msg + notif;
+  },
 });
