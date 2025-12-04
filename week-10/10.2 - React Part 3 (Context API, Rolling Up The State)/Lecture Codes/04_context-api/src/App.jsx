@@ -31,6 +31,21 @@ function App() {
   );
 }
 
+// Create a function component named Light that renders the LightBulb and LightSwitch components
+function Light() {
+  // Return the JSX for the component
+  return (
+    // Render the LightBulb and LightSwitch components
+    <div>
+      {/* Render the LightBulb component */}
+      <LightBulb />
+
+      {/* Render the LightSwitch component */}
+      <LightSwitch />
+    </div>
+  );
+}
+
 // Create a function component named LightBulb that displays the status of the bulb
 function LightBulb() {
   // Use the useContext hook to access the value of bulbOn from the BulbContext
