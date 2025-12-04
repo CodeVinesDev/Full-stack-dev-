@@ -21,5 +21,16 @@ function App() {
   );
 }
 
+// Define the LightSwitch component that accepts 'toggleBulb' as a prop
+function LightSwitch({ toggleBulb }) {
+  // Return JSX to display a button, which when clicked, triggers the 'toggleBulb' function to toggle the bulb state
+  return (
+    <div>
+      {/* Add an onClick event listener to the button that calls 'toggleBulb' when the button is clicked */}
+      <button onClick={toggleBulb}>Toggle the Bulb</button>
+    </div>
+  );
+}
+
 // Export the App component as the default export so it can be imported and used in other files
 export default App;
