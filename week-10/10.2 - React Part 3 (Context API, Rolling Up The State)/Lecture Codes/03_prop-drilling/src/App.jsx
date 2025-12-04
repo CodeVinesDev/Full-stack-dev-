@@ -21,6 +21,29 @@ function App() {
   );
 }
 
+// Define the Light component that accepts 'bulbOn' and 'toggleBulb' as props
+function Light({ bulbOn, toggleBulb }) {
+  // Return JSX to render both the LightBulb and LightSwitch components
+  return (
+    <div>
+      {/* Render the LightBulb component, passing 'bulbOn' as a prop */}
+      <LightBulb bulbOn={bulbOn} />
+
+      {/* Render the LightSwitch component, passing 'toggleBulb' as a prop */}
+      <LightSwitch toggleBulb={toggleBulb} />
+    </div>
+  );
+}
+
+// Define the LightBulb component that accepts 'bulbOn' as a prop
+function LightBulb({ bulbOn }) {
+  // Return JSX to conditionally display the text "Bulb is on" or "Bulb is off" based on the value of 'bulbOn'
+  return (
+    // Display the text "Bulb is on" if 'bulbOn' is true, otherwise display "Bulb is off"
+    <div>{bulbOn ? "Bulb is on" : "Bulb is off"}</div>
+  );
+}
+
 // Define the LightSwitch component that accepts 'toggleBulb' as a prop
 function LightSwitch({ toggleBulb }) {
   // Return JSX to display a button, which when clicked, triggers the 'toggleBulb' function to toggle the bulb state
