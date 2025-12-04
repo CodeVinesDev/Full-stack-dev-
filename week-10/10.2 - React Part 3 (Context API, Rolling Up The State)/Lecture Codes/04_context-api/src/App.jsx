@@ -31,6 +31,21 @@ function App() {
   );
 }
 
+// Create a function component named LightBulb that displays the status of the bulb
+function LightBulb() {
+  // Use the useContext hook to access the value of bulbOn from the BulbContext
+  const { bulbOn } = useContext(BulbContext);
+
+  // Return the JSX for the component
+  return (
+    // Display the status of the bulb
+    <div>
+      {/* Display the status of the bulb using the ternary operator */}
+      {bulbOn ? "Bulb is on" : "Bulb is off"}
+    </div>
+  );
+}
+
 // Create a function component named LightSwitch that toggles the status of the bulb
 function LightSwitch() {
   // Use the useContext hook to access the value of bulbOn and setBulbOn from the BulbContext
