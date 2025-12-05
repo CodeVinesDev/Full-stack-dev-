@@ -17,5 +17,19 @@ function useCounter() {
   return { count, increaseCount };
 }
 
+// Create a function component named App that serves as the main application component
+function App() {
+  // Return the JSX for the component
+  return (
+    <div>
+      {/* Render the Counter component */}
+      <Counter />
+
+      {/* Render the Counter component */}
+      <Counter />
+    </div>
+  );
+}
+
 // Export the App component as the default export from this module
 export default App;
