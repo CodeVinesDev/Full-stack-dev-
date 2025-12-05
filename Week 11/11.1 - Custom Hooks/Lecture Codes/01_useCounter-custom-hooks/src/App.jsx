@@ -31,5 +31,19 @@ function App() {
   );
 }
 
+// Create a function component named Counter that displays a button to increase the count
+function Counter() {
+  // Destructure the count and increaseCount function from the useCounter custom hook
+  const { count, increaseCount } = useCounter();
+
+  // Return the JSX for the component
+  return (
+    <div>
+      {/* Display the count value */}
+      <button onClick={increaseCount}>Increase {count}</button>
+    </div>
+  );
+}
+
 // Export the App component as the default export from this module
 export default App;
