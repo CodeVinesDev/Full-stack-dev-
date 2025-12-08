@@ -1,26 +1,50 @@
-import { User } from "../models/User.modle";
+import { User } from "../models/User.model.js";
+
 export const signup = async (req, res) => {
   const { email, password } = req.body;
+
   try {
-    if (!email || (!password && password.length >= 8)) {
-      throw new Error("plese filed all form");
+    // 1️⃣ Validate input
+    if (!email || !password) {
+      return res
+        .status(400)
+        .json({ message: "Email and password are required." });
     }
 
-    const exitUser = await User.find({ email });
-    if (exitUser) {
-      res.status(404).json("user areday exists plese login ");
+    if (password.length < 6) {
+      return res
+        .status(400)
+        .json({ message: "Password must be at least 6 characters long." });
     }
 
-    const newUser = {
-      email: email,
-      password: password,
-    };
+    // Optional: basic email format check
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      return res.status(400).json({ message: "Invalid email format." });
+    }
 
-    await User.create(newUser);
-    return res.status(200).json("user susecfuly signup");
+    // 2️⃣ Check if user already exists
+    const existingUser = await User.findOne({ email });
+    if (existingUser) {
+      return res
+        .status(409)
+        .json({ message: "User already exists. Please login." });
+    }
+
+    // 3️⃣ Create user (pre-save hook will hash password)
+    const user = new User({ email, password });
+    console.log("user ,", user);
+    console.log("hashed password in DB:", user.password);
+
+    await user.save();
+
+    // 4️⃣ Return safe response (do NOT return password)
+    return res.status(201).json({
+      message: "User successfully created.",
+      user: { id: user._id, email: user.email },
+    });
   } catch (error) {
-    throw new Error("somthing went wrong");
+    console.error("Signup error:", error);
+    return res.status(500).json({ message: "Internal server error." });
   }
 };
-export const login = (req, res) => {};
-export const logout = (req, res) => {};
