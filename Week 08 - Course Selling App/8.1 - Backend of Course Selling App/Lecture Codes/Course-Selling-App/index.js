@@ -42,7 +42,7 @@ async function main() {
         const connection = await mongoose.connect("mongodb+srv://100xdevs:WvaTca0509mb90YX@cluster0.ossjd.mongodb.net/coursera-app");
         console.log("Connected to the database");
     } catch(error) {
-         console.log("Failed to connect to the database", error)
+         console.log("Failed to connect to the databases7", error)
     }
 
     /*
@@ -59,7 +59,7 @@ async function main() {
     
     // Start the server on port 3000
     app.listen(3000, () => {
-        console.log("Server is listening on port 3000");
+        console.log("Server is listening on port `3000`");
     });
 }
 
