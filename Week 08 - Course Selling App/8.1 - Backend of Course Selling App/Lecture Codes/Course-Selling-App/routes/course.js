@@ -15,7 +15,7 @@ const courseRouter = Router();
 
 // Define the course routes for previewing a course
 courseRouter.get("/preview", function (req, res) {
-    // you would expect the user to pay money to purchase a course
+    // you would expect the user to pay money to purchase a courses
 
     res.json({
         message: "Priview endpoint!",

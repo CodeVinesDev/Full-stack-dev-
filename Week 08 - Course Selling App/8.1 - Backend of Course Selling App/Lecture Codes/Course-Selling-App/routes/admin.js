@@ -8,6 +8,8 @@
 const { Router } = require("express");
 
 // Create a new Router instance for admin routes
+
+//  admin routes
 const adminRouter = Router();
 
 // Import adminModel from db.js
