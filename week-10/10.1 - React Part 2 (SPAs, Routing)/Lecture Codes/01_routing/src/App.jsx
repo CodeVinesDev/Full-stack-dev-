@@ -47,7 +47,7 @@ function ErrorPage() {
   return (
     <div>
       {/* Display a message indicating the page was not found */}
-      <h1>404 Page not found</h1>
+      <h1>404 Page not found!</h1>
     </div>
   );
 }
