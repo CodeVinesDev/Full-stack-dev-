@@ -28,15 +28,15 @@ const Landing = () => {
       {/* Features Section */}
       <section id="features" style={styles.features}>
         <div style={styles.card}>
-          <h3>🚀 Fast</h3>
+          <h3> Fast</h3>
           <p>Optimized for performance and speed.</p>
         </div>
         <div style={styles.card}>
-          <h3>🔒 Secure</h3>
+          <h3> Secure</h3>
           <p>Built with security best practices.</p>
         </div>
         <div style={styles.card}>
-          <h3>⚙️ Flexible</h3>
+          <h3> Flexible</h3>
           <p>Easy to customize and scale.</p>
         </div>
       </section>
