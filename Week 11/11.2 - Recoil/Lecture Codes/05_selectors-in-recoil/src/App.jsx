@@ -21,5 +21,20 @@ function App() {
 
 
 
+
+
+// IsEven component that checks if the count is even and displays the result
+function IsEven() {
+    // useRecoilValue hook to get the computed value from evenSelector
+    const isEven = useRecoilValue(evenSelector);
+
+    return (
+        <div>
+            {/* Displaying whether the count is even or not */}
+            <h3>Is Even: {isEven ? "Yes" : "No"}</h3>
+        </div>
+    );
+}
+
 // Exporting the App component as the default export to make it available in other parts of the application
 export default App;
