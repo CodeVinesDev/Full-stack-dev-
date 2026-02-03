@@ -51,7 +51,24 @@ function MainApp() {
     );
 }
 
+// Create a ButtonUpdator Component
+function ButtonUpdator() {
+    // Use the useSetRecoilState hook to get the setter function for the messagingAtom
+    const setMessagingAtomCount = useSetRecoilState(messagingAtom);
 
+    return (
+        // Render a button that updates the messagingAtom count when clicked
+        <button
+            onClick={() => {
+                // Increment the messagingAtom count by 1
+                setMessagingAtomCount((count) => count + 1);
+            }}
+        >
+            {/* Label for the button */}
+            Me
+        </button>
+    );
+}
 
 // Export the App component as the default export to use it in other components or files
 export default App;
