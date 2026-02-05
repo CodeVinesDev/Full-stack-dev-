@@ -33,3 +33,20 @@ export const messagingAtom = atom({
     default: 0,
 });
 
+// Define a selector to calculate the total notification count and export it
+export const totalNotificationsSelector = selector({
+    // Unique key for identifying the selector
+    key: 'totalNotificationsSelector',
+
+    // Define the get function to calculate the total notification count
+    get: ({ get }) => {
+        // Get the current value of the networkAtom, jobsAtom, notificationsAtom, messagingAtom atoms
+        const networkNotificationCount = get(networkAtom);
+        const jobsAtomCount = get(jobsAtom);
+        const notificationsAtomCount = get(notificationsAtom);
+        const messagingAtomCount = get(messagingAtom);
+
+        // Return the sum of the notification counts from all the atoms
+        return networkNotificationCount + jobsAtomCount + notificationsAtomCount + messagingAtomCount;
+    }
+});
