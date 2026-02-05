@@ -17,7 +17,19 @@ export const jobsAtom = atom({
     default: 0,
 });
 
+// Define an atom for managing the general notification count and export it
+export const notificationsAtom = atom({
+    // Unique key for identifying the atom
+    key: 'notificationsAtom',
+    // Default value for the atom
+    default: 12,
+});
 
-
-
+// Define an atom for managing the messaging notification count and export it
+export const messagingAtom = atom({
+    // Unique key for identifying the atom
+    key: 'messagingAtom',
+    // Default value for the atom
+    default: 0,
+});
 
