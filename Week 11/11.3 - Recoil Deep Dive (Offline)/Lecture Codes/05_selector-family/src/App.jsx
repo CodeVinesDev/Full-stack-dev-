@@ -18,23 +18,6 @@ function App() {
     );
 }
 
-// Create a Todo component to render the individual todo items with the given ID as a prop
-function Todo({ id }) {
-    // Get the todo state and the setter function from the Recoil state using the useRecoilState hook
-    const [todo, setTodo] = useRecoilState(todosAtomFamily(id));
-
-    // Return the JSX structure for rendering the UI
-    return (
-        <>
-            {/* Display the title and description of the todo */}
-            {todo.title}
-            {todo.description}
-
-            {/* Add a line break between todos */}
-            <br />
-        </>
-    );
-}
 
 // Export the App component as the default export for use in other files or components
 export default App;
